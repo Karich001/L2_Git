@@ -1,0 +1,332 @@
+﻿
+Extract the domain name from a URL
+JavaScript:
+function domainName(url){
+  return url.replace(/^(https?|ftp):\/\//, '').replace(/^www\./, '').split('.')[0];
+}
+      
+
+Write Number in Expanded Form
+JavaScript:
+function expandedForm(num) {
+  const str = num.toString();
+    const parts = [];
+    
+    for (let i = 0; i < str.length; i++) {
+        const digit = parseInt(str[i]);
+        if (digit != 0) {
+            const placeValue = digit * Math.pow(10, str.length - 1 - i);
+            parts.push(placeValue.toString());
+        }
+    }
+    
+    return parts.join(' + ');
+}
+Find the missing term in an Arithmetic Progression
+JavaScript:
+function findMissing(list) {  
+  let sumnum = 0;
+  for(let i = 0;i < list.length;i++)
+    {
+      sumnum += list[i];
+    }
+  return ((list.length + 1) * (list[0] + list[list.length - 1]) / 2) - sumnum;
+}
+
+function findMissing(list) {  
+  let num  = list[1] - list[0];
+if(num > list[2] - list[1])
+{
+   list.splice(1,0,list[0] + (list[2] - list[1]));
+   return list[0] + (list[2] - list[1]);
+}
+for(let i = 1;i < list.length;i++)
+{
+  if(num != list[i + 1] - list[i])
+  {
+    list.splice(i,0,list[i] + num);
+    return list[i];
+  }
+}
+}
+      
+Create Phone Number
+JavaScript:
+function createPhoneNumber(numbers){
+  let phnum = "";
+  return phnum = "(" + numbers.slice(0,3).join('') + ")" + ' ' + numbers.slice(3,6).join('') + "-" + numbers.slice(6,10).join('');
+}
+      
+Array Helpers
+JavaScript:
+Array.prototype.square = function() {  
+    return this.map(n => n ** 2);
+};
+Array.prototype.cube = function(){
+    return this.map(n=> n ** 3);
+};
+Array.prototype.sum = function(){
+    let a = 0;
+    for(let i = 0;i < this.length;i++)
+      {
+        a += this[i];
+      }
+  return a;
+};
+Array.prototype.average = function(){
+  if(this.length === 0)
+    {
+      return NaN;
+    }
+  return this.sum() / this.length;
+};
+Array.prototype.even = function(){
+  let g = [];
+  for(let i = 0; i < this.length;i++)
+{
+  if(this[i]%2 === 0)
+{
+  g.push(this[i]);
+}
+}
+  return g;
+};
+
+Array.prototype.odd = function(){
+  let g = [];
+  for(let i = 0; i < this.length;i++)
+{
+  if(this[i]%2 != 0)
+{
+  g.push(this[i]);
+}
+}
+  return g;
+};
+      
+Convert A Hex String To RGB
+JavaScript:
+function hexStringToRGB(string) {
+  let result  = [];
+let result1 = [];
+for(let i = 1,j = 0;i < string.length;i+=2,j++)
+{
+    result.push(string[i] + string[i + 1]);
+    result1.push(parseInt(result[j],16));
+}
+let map =
+{
+    'r':result1[0],
+    'g':result1[1],
+    'b':result1[2]
+};
+return map;
+}
+      
+Lottery Ticket
+JavaScript:
+function bingo(ticket, win){
+let Symbol = 0;
+let string = "";
+let count = 0;
+for(let i = 0; i < ticket.length;i++)
+{
+    Symbol = ticket[i][1];
+    string = ticket[i][0];
+    for(let j = 0; j < string.length;j++)
+    {
+        if(Symbol == string[j].charCodeAt(0))
+        {
+            count +=1;
+            break;
+        }
+    }
+}
+return count >= win?'Winner!':'Loser!';
+}
+
+Split Strings
+JavaScript:
+function solution(string){
+   let size = string.length;
+let result = [];
+if(size%2 == 0)
+{
+    for(let i = 0; i < size; i+=2)
+    {
+    result.push(string[i] + string[i+1]);
+    }
+}
+else
+{
+    for(let i = 0; i <= size; i+=2)
+    {
+    if(i == size - 1)
+    {
+        result.push(string[size-1] + "_");
+        break;
+    }
+    else
+    {
+        result.push(string[i] + string[i+1]);
+    }
+    }
+}
+return result;
+}
+      
+Mexican Wave
+JavaScript:
+function wave(string){
+  let result = [];
+let Copy = "";
+for(let i = 0; i < string.length; i++)
+{
+  if(string[i] == ' ')
+    {
+      continue;
+    }
+    for(let j = 0; j < string.length;j++)
+    {
+        if(i == j)
+        {
+            Copy += string[j].toUpperCase();
+        }
+        else
+        {
+            Copy += string[j];
+        }
+    }
+    result.push(Copy);
+    Copy = "";
+}
+return result;
+}
+      
+
+WeIrD StRiNg CaSe
+JavaScript:
+function toWeirdCase(words){
+  
+let result = "";
+count = 0;
+for(let i = 0; i < words.length;i++)
+{
+  if(words[i] == ' ')
+  {
+    i++;
+    count = 0;
+    result += ' ';
+  }
+  if(count%2 == 0)
+  {
+   result += words[i].toUpperCase();
+  }
+  else
+  {
+    result += words[i].toLowerCase();
+  }
+  count++;
+}
+return result;
+}
+      
+Primes in numbers
+JavaScript:
+function primeFactors(currentNum){
+let SimpleNum = 2,count = 0;
+let string = "";
+for(let i = 1;currentNum > 1;i++)
+{
+  for(let j = 0; j < currentNum; j++)
+    {
+      if(currentNum%SimpleNum === 0)
+      {
+        count++;
+        break;
+      }
+      else
+      {
+        count = 0;
+        SimpleNum+=1;
+      }
+    }
+  currentNum/= SimpleNum;
+  if(!Number.isInteger(currentNum/SimpleNum))
+  {
+    if(count > 1)
+    {
+      string = string + "(" + SimpleNum + "**" + count + ")";
+    }
+    else
+    {
+      string = string + "(" + SimpleNum + ")";
+    }
+    i = 1;
+  }
+}
+return string;
+}
+
+What century is it?
+JavaScript:
+function whatCentury(year)
+{
+let century = Math.ceil(year/100);
+if(century%100 >= 11 && century%100 <=13)
+{
+  return century + "th";
+}
+  switch(century%10)
+    {
+    case 1: return century + "st";
+    case 2: return century + "nd";
+    case 3: return century + "rd";
+    default: return century + "th";
+    }
+}
+      
+IPv4 Parser
+JavaScript:
+function ipv4Parser(ip, mask){
+const oct = ip.split('.').map(Number);
+const oct2 = mask.split('.').map(Number);
+let newIp = [],dif = [];
+for(let i = 0; i < oct.length;i++)
+{
+    newIp[i] = oct[i] & oct2[i];
+    dif[i] = oct[i] - newIp[i];
+}
+
+return [newIp.join('.'), dif.join('.')];
+
+
+}
+      
+Two cube sums
+JavaScript:
+function hasTwoCubeSums(n) {
+        let a = 0,b = 0,count = 0;
+for(let i = 1; i < Math.cbrt(n); i++)
+{
+    a = i;
+    for(let j = i + 1; j < Math.cbrt(n); j++)
+    {
+        b = j;
+        if(Math.pow(a,3) + Math.pow(b,3) == n)
+        {
+            count++;
+          if(count == 2)
+            {
+              return true;
+            }
+            break;
+        }
+    }
+}
+return false;
+
+}
+      
+
+
