@@ -1,4 +1,24 @@
-﻿
+T.T.T.33: Grandfather clock
+function howManyTimes(time1,time2){
+  const date2 = new Date(time2);
+  let date1 = new Date(time1);
+  let chet = 0;
+  while (date1 < date2)
+    {
+      const h = date1.getHours() % 12 || 12;
+     if(date1.getMinutes() === 30 && date1.getSeconds() === 0)
+        {
+          chet+=1;
+        }
+      else if(date1.getSeconds() < h && date1.getMinutes() === 0){
+        chet+=1;
+      }
+      date1.setSeconds(date1.getSeconds() + 1);
+    }
+  return chet;
+}
+
+
 Extract the domain name from a URL
 JavaScript:
 function domainName(url){
